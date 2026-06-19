@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir Ullah | Computational & Materials Chemist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #c53030;
+            --accent-light: #e53e3e;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --text-muted: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(26,54,93,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(197,48,48,0.1);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(26,54,93,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26,54,93,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(26,54,93,0.03);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 2px dashed var(--border);
+            border-radius: 50%;
+            animation: rotate 30s linear infinite;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(26,54,93,0.1);
+            border-radius: 50%;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-alt);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(26,54,93,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-content p {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Education & Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(197,48,48,0.08);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-org {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .interest-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .interest-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .interest-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .interest-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .interest-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Publications */
+        .publications {
+            background: var(--bg-alt);
+        }
+
+        .pub-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pub-item {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: start;
+            transition: all 0.3s;
+        }
+
+        .pub-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateX(5px);
+        }
+
+        .pub-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 60px;
+        }
+
+        .pub-content h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .pub-journal {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .pub-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-dft {
+            background: rgba(26,54,93,0.1);
+            color: var(--primary);
+        }
+
+        .badge-exp {
+            background: rgba(72,187,120,0.1);
+            color: #276749;
+        }
+
+        .badge-review {
+            background: rgba(214,158,46,0.1);
+            color: #975a16;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-header span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .project-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .project-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-tag {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: white;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1f36;
+            color: rgba(255,255,255,0.6);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-desc {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .contact-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Amir Ullah</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Computational & Materials Chemist</span>
+                <h1>Amir <span>Ullah</span></h1>
+                <p class="hero-subtitle">MPhil Chemistry | DFT & Computational Materials Researcher</p>
+                <p class="hero-desc">
+                    Dedicated researcher specializing in Density Functional Theory (DFT), nanomaterials synthesis, 
+                    and computational investigation of advanced materials including perovskites, chalcogenides, 
+                    MAX phases, and Zintl compounds for optoelectronic and energy applications.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#publications" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> View Publications
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=DR3aZ8UAAAAJ&hl=en" target="_blank" class="btn btn-outline">
+                        <i class="fas fa-graduation-cap"></i> Google Scholar
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Publications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Research</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Collaborators</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://raw.githubusercontent.com/amirullah/amirullah.github.io/main/assets/img/profile.jpg" alt="Amir Ullah" onerror="this.src='https://ui-avatars.com/api/?name=Amir+Ullah&background=1a365d&color=fff&size=320'">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Research Profile</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I am a computational and materials chemist with an MPhil in Chemistry from Hazara University, Pakistan. 
+                        My research bridges experimental nanomaterial synthesis with first-principles computational modeling 
+                        to design and characterize advanced functional materials.
+                    </p>
+                    <p>
+                        My work focuses on Density Functional Theory (DFT) investigations of perovskites, chalcogenides, 
+                        MAX phases, Zintl compounds, and half-Heusler materials. I explore their structural, electronic, 
+                        optical, elastic, thermodynamic, and thermoelectric properties for applications in optoelectronics, 
+                        spintronics, and renewable energy.
+                    </p>
+                    <p>
+                        I have also contributed to green synthesis of metal and semiconductor nanoparticles, 
+                        photocatalytic degradation of organic dyes, and adsorptive removal of heavy metals from aqueous solutions.
+                    </p>
+                </div>
+                <div class="about-info">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-content">
+                                <h4>Email</h4>
+                                <p>amirktk722@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
+                            <div class="info-content">
+                                <h4>Phone</h4>
+                                <p>(+92) 332 585 5291</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-content">
+                                <h4>Location</h4>
+                                <p>Karak, Khyber Pakhtunkhwa, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-flag"></i></div>
+                            <div class="info-content">
+                                <h4>Nationality</h4>
+                                <p>Pakistani</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-calendar"></i></div>
+                            <div class="info-content">
+                                <h4>Date of Birth</h4>
+                                <p>February 18, 1997</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-language"></i></div>
+                            <div class="info-content">
+                                <h4>Languages</h4>
+                                <p>Urdu, English, Pashto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Academic Background</span>
+                <h2 class="section-title">Education</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 – 2022</span>
+                        <h3 class="timeline-title">Master of Philosophy (MPhil) in Chemistry</h3>
+                        <p class="timeline-org">Hazara University, Mansehra, Pakistan</p>
+                        <p class="timeline-desc">Thesis: Green synthesis of Silver Nanoparticles and their interaction study with Melamine and Microorganisms</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2015 – 2019</span>
+                        <h3 class="timeline-title">Bachelor of Science (BS) in Chemistry</h3>
+                        <p class="timeline-org">Government Post Graduate College Kohat, Pakistan</p>
+                        <p class="timeline-desc">Project: Plant Mediated Synthesis of CdS Nanoparticles: Their Characterization and Application for Photocatalytic Degradation of Toxic Organic Dye</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2013 – 2016</span>
+                        <h3 class="timeline-title">Higher Secondary School Certificate (HSSC)</h3>
+                        <p class="timeline-org">Shaheen Children Academy and College of Sciences, Metha Khel, Karak</p>
+                        <p class="timeline-desc">Pre-Medical</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2011 – 2013</span>
+                        <h3 class="timeline-title">Secondary School Certificate (SSC)</h3>
+                        <p class="timeline-org">Government High School Sabir Abad, Karak</p>
+                        <p class="timeline-desc">Science</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="about" id="experience">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Professional Journey</span>
+                <h2 class="section-title">Work Experience</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Sep 2022 – Present</span>
+                        <h3 class="timeline-title">School Teacher</h3>
+                        <p class="timeline-org">Public School, Karak, Pakistan</p>
+                        <p class="timeline-desc">Teaching Chemistry and mentoring students in science education.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2022 – Sep 2022</span>
+                        <h3 class="timeline-title">Lecturer in Chemistry</h3>
+                        <p class="timeline-org">Boston School and College System, Karak, Pakistan</p>
+                        <p class="timeline-desc">Delivered lectures in Chemistry for undergraduate students.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Nov 2020 – Jan 2022</span>
+                        <h3 class="timeline-title">Lecturer in Chemistry</h3>
+                        <p class="timeline-org">Modern Age Public School and College Marghzar, Mansehra, Pakistan</p>
+                        <p class="timeline-desc">Taught Chemistry and supervised laboratory sessions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct 2019 – Oct 2020</span>
+                        <h3 class="timeline-title">Lecturer in Chemistry</h3>
+                        <p class="timeline-org">Pearl Model School and College, Karak, Pakistan</p>
+                        <p class="timeline-desc">Conducted Chemistry classes and developed curriculum materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="research">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Focus Areas</span>
+                <h2 class="section-title">Research Interests</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-atom"></i></div>
+                    <h3>Computational Materials Science</h3>
+                    <p>First-principles DFT calculations using WIEN2K and Materials Studio for structural, electronic, and optical property predictions.</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Nanomaterials & Photocatalysis</h3>
+                    <p>Green synthesis of metal and semiconductor nanoparticles for photocatalytic degradation of toxic organic dyes and environmental remediation.</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-solar-panel"></i></div>
+                    <h3>Optoelectronic Materials</h3>
+                    <p>Investigation of perovskites, chalcogenides, and MAX phases for solar cells, LEDs, and UV optoelectronic applications.</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-magnet"></i></div>
+                    <h3>Spintronics & Magnetism</h3>
+                    <p>Study of magnetic ordering, half-metallicity, and spin-dependent transport in double perovskites and Zintl compounds.</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-temperature-high"></i></div>
+                    <h3>Thermoelectric Materials</h3>
+                    <p>Engineering band gaps and thermoelectric properties in advanced materials for waste heat recovery and energy conversion.</p>
+                </div>
+                <div class="interest-card fade-in">
+                    <div class="interest-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Medicinal & Green Chemistry</h3>
+                    <p>Biogenic synthesis of nanoparticles, heavy metal extraction, and electrochemical applications in environmental and health sciences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications" id="publications">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Scholarly Work</span>
+                <h2 class="section-title">Selected Publications</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="pub-filters">
+                <button class="filter-btn active" onclick="filterPubs('all')">All</button>
+                <button class="filter-btn" onclick="filterPubs('dft')">DFT/Computational</button>
+                <button class="filter-btn" onclick="filterPubs('exp')">Experimental</button>
+            </div>
+
+            <div class="pub-list">
+                <!-- 2026 -->
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2026</div>
+                    <div class="pub-content">
+                        <h3>Energy-Driven Optoelectronic and Mechanical Insights into X₃GeC (X = Mn, Ni) Antiperovskites</h3>
+                        <p class="pub-authors">Ullah, A., Tirth, V., Algahtani, A., Aljuaid, W.S., Alshehri, E.M., Albalawi, H., ... & Rahman, N.</p>
+                        <p class="pub-journal">Modern Physics Letters B</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2026</div>
+                    <div class="pub-content">
+                        <h3>Engineering Band Gaps and Thermoelectric Properties in Ba₂LaXO₆ (X = Bi, Sb) Double Perovskites via First-Principles Calculations</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Indian Journal of Physics</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2026</div>
+                    <div class="pub-content">
+                        <h3>Electronic Structure and Optical Characteristics of Ni₂X (X = In, Si) Intermetallic Compounds for Visible and UV Applications</h3>
+                        <p class="pub-authors">Ullah, A., Sfina, N., Alshahrani, M.D., Alshehri, S., Qissi, S., Almaymoni, N.K., ... & Rahman, N.</p>
+                        <p class="pub-journal">Silicon</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2026</div>
+                    <div class="pub-content">
+                        <h3>Half-Metallicity, Optical Activity and Magnetic Ordering in Halide Double Perovskites Rb₂MnYF₆ (Y = Ag, Cu): A First-Principles Study</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Optical and Quantum Electronics, 58(3)</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3>DFT Analysis of Wide Band Gap TlBaCl₃ and CsBaCl₃ Chloroperovskites for UV Applications</h3>
+                        <p class="pub-authors">Ullah, A., Sfina, N., Alshahrani, M.D., Alshehri, S., Tirth, V., Algahtani, A., ... & Ahmad, R.</p>
+                        <p class="pub-journal">Scientific Reports, 15(1), 33376</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3>First-Principles Study of Sr₂CeBiO₆ and Ba₂CeBiO₆ Double Perovskites for Optoelectronic Applications</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Indian Journal of Physics, 1-13</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3>First-Principles Investigation of Structural, Electronic, Optical, and Elastic Properties of Y₂ZnX₄ (X = S, Se) Spinel Compounds</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Computational Condensed Matter, e01039</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3>DFT Study of Structural, Elastic and Optoelectronic Properties of Binary X₂Se (X = Cd, Zn) Chalcogenides</h3>
+                        <p class="pub-authors">Ullah, A., Rahman, N., Husain, M., Almalki, W.M., Hussien, M., Tirth, V., ... & Khan, R.</p>
+                        <p class="pub-journal">Inorganic Chemistry Communications, 113985</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h3>Unlocking the Physical Properties of RbXBr₃ (X = Ba, Be) Halide Perovskites for Potential Applications</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Inorganic Chemistry Communications, 113879</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="dft">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h3>First Principle Study of Structural and Optoelectronic Properties of ZnLiX₃ (X = Cl or F) Perovskites</h3>
+                        <p class="pub-authors">Khan, I., Ullah, A., Rahman, N., Husain, M., Tirth, V., & Sohail, M.</p>
+                        <p class="pub-journal">Results in Physics, 66, 108019</p>
+                    </div>
+                    <span class="pub-badge badge-dft">DFT</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h3>Analytical Evaluation of Polymeric CNTs/CuO Nanocomposite Electrode for Room Temperature Detection of Volatile Organic Compounds (VOCs)</h3>
+                        <p class="pub-authors">Khan, Amir Ali, et al.</p>
+                        <p class="pub-journal">Results in Chemistry, 5, 100928</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h3>Optimised Biodiesel Production from Waste Vegetable Cooking Oil Catalysed by Green Synthesised Calcium Oxide Nanoparticles</h3>
+                        <p class="pub-authors">Rasheed, S., et al.</p>
+                        <p class="pub-journal">International Journal of Renewable Energy Technology, 13(4), 377-395</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="review">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h3>Brassica Species Mediated Green Synthesis of Nanoparticles and Its Potential Biological Applications</h3>
+                        <p class="pub-authors">Rasheed, S., Arif, S., Ullah, A., Rehman, W., & Abdellatif, M.H.</p>
+                        <p class="pub-journal">In: Brassica - Recent Advances, IntechOpen</p>
+                    </div>
+                    <span class="pub-badge badge-review">Review</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h3>Plant Mediated Synthesis of CdS Nanoparticles, Their Characterization and Application for Photocatalytic Degradation of Toxic Organic Dye</h3>
+                        <p class="pub-authors">Ullah, A., Rasheed, S., Ali, I., & Ullah, N.</p>
+                        <p class="pub-journal">Chemical Review and Letters, 4(2)</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h3>Biogenic Synthesis of Silver Nanoparticles by the Action of Anthocyanin Extracted from Rose Petals, Soybeans, Red Cabbage and Rice</h3>
+                        <p class="pub-authors">Ullah, A., Rasheed, S., & Ullah, A.</p>
+                        <p class="pub-journal">Letters in Applied NanoBioScience</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h3>Adsorptive Removal of Cobalt (II) and Chromium (III) from Aqueous Solution onto Citrus Limon Leaves Powder</h3>
+                        <p class="pub-authors">Ullah, A., et al.</p>
+                        <p class="pub-journal">Letters in Applied NanoBioScience, 10(3), 2446-2458</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+
+                <div class="pub-item fade-in" data-category="exp">
+                    <div class="pub-year">2020</div>
+                    <div class="pub-content">
+                        <h3>Green Synthesis of Copper Nanoparticles Using Extract of Dicliptera Roxburghiana and Photocatalytic Activity Against Methylene Blue Degradation</h3>
+                        <p class="pub-authors">Ullah, N., Ullah, A., & Rasheed, S.</p>
+                        <p class="pub-journal">Lett. Appl. NanoBioSci, 9</p>
+                    </div>
+                    <span class="pub-badge badge-exp">Experimental</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Technical Expertise</span>
+                <h2 class="section-title">Skills & Tools</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-vial"></i> Characterization Techniques</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">UV-Visible Spectroscopy</span>
+                        <span class="skill-tag">FTIR</span>
+                        <span class="skill-tag">EDX</span>
+                        <span class="skill-tag">XRD</span>
+                        <span class="skill-tag">SEM</span>
+                        <span class="skill-tag">TEM</span>
+                        <span class="skill-tag">TGA</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-laptop-code"></i> Computational Software</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">WIEN2K</span>
+                        <span class="skill-tag">Materials Studio</span>
+                        <span class="skill-tag">OriginLab</span>
+                        <span class="skill-tag">Xpert High Score</span>
+                        <span class="skill-tag">ChemDraw</span>
+                        <span class="skill-tag">ChemSoft</span>
+                        <span class="skill-tag">Xmgrace</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-code"></i> Programming & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Scientific Computing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="about" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Research Projects</span>
+                <h2 class="section-title">Key Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>DFT Investigation of Advanced Materials</h3>
+                        <span>Ongoing Research Project</span>
+                    </div>
+                    <div class="project-body">
+                        <p>Theoretical investigations of structural, elastic, optoelectronic, magnetic, thermodynamic, and thermoelectric properties of advanced materials including perovskites, chalcogenides, Zintl compounds, and half-Heusler materials using Density Functional Theory (DFT).</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Green Synthesis of Silver Nanoparticles</h3>
+                        <span>MPhil Thesis Project</span>
+                    </div>
+                    <div class="project-body">
+                        <p>Green synthesis of silver nanoparticles and their interaction study with melamine and microorganisms. Focused on eco-friendly synthesis routes and biological applications.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Plant-Mediated CdS Nanoparticles</h3>
+                        <span>BS Final Year Project</span>
+                    </div>
+                    <div class="project-body">
+                        <p>Plant-mediated synthesis of CdS nanoparticles, their characterization, and application for photocatalytic degradation of toxic organic dyes in wastewater treatment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact</h2>
+                <div class="section-line" style="background: rgba(255,255,255,0.3);"></div>
+            </div>
+            <div class="contact-grid">
+                <a href="mailto:amirktk722@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>amirktk722@gmail.com</span>
+                </a>
+                <a href="tel:+923325855291" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(+92) 332 585 5291</span>
+                </a>
+                <span class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Karak, Khyber Pakhtunkhwa, Pakistan</span>
+                </span>
+            </div>
+            <div class="social-links">
+                <a href="https://orcid.org/0000-0003-1514-1562" target="_blank" class="social-link" title="ORCID">
+                    <i class="fab fa-orcid"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=DR3aZ8UAAAAJ&hl=en" target="_blank" class="social-link" title="Google Scholar">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+                <a href="https://www.researchgate.net/profile/Amir-Ullah-3" target="_blank" class="social-link" title="ResearchGate">
+                    <i class="fab fa-researchgate"></i>
+                </a>
+                <a href="mailto:amirktk722@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p> Amir Ullah. All rights reserved. | Designed for Academic Portfolio</p>
+    </footer>
+
+    <script>
+        // Publication filter
+        function filterPubs(category) {
+            const items = document.querySelectorAll('.pub-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'grid';
+                    setTimeout(() => item.style.opacity = '1', 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
